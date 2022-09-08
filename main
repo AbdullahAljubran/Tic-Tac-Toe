@@ -1,0 +1,151 @@
+import random
+from tabnanny import check
+
+choosing=int(input("Welcome to Tic Tac Toe Game\nChoose a number:\n1-X\n2-O\n"))
+if (choosing==1):
+    computer="O"
+    choosing="X"
+elif (choosing==2):
+    computer="X"
+    choosing="O"
+
+possibleNumbers = [1,2,3,4,5,6,7,8,9]
+gameBoard = [[1,2,3],[4,5,6],[ 7,8,9]]
+rows = 3
+cols = 3
+
+def printGameBoard():
+    for x in range(rows):
+        print("\n-------------")
+        print("|",end=" ")
+        for y in range(cols):
+            print(gameBoard[x][y],end=" | ")
+
+
+def procces(pic,turn):
+    pic -=1
+    if (pic==0):
+        gameBoard[0][0]=turn
+    elif (pic==1):
+        gameBoard[0][1]=turn
+    elif (pic==2):
+        gameBoard[0][2]=turn
+    elif (pic==3):
+        gameBoard[1][0]=turn
+    elif (pic==4):
+        gameBoard[1][1]=turn
+    elif (pic==5):
+        gameBoard[1][2]=turn
+    elif (pic==6):
+        gameBoard[2][0]=turn
+    elif (pic==7):
+        gameBoard[2][1]=turn
+    elif (pic==8):
+        gameBoard[2][2]=turn
+
+
+turn=0
+loop=False
+while(loop==False):
+    ### Human turn
+    if(turn % 2==1):
+        printGameBoard()
+        print("\n-------------\n")
+        picked=int(input("\nchoose a nomber from 1 to 9:"))
+        if(picked<=9 or picked>=1):
+            procces(picked,choosing)
+            possibleNumbers.remove(picked)
+        else:
+            print("Invalid, please choose a nomber from 1 to 9:")
+        turn+=1
+    ### computer turn
+    while(True):
+        cpu=random.choice(possibleNumbers)
+        if(cpu in possibleNumbers):
+            procces(cpu,computer)
+            possibleNumbers.remove(cpu)
+            turn +=1
+            break
+    ### X axis
+    if(gameBoard[0][0]== "X" and gameBoard[0][1]== "X" and gameBoard[0][2]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][0]== "O" and gameBoard[0][1]== "O" and gameBoard[0][2]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    elif(gameBoard[1][0]== "O" and gameBoard[1][1]== "O" and gameBoard[1][2]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    elif(gameBoard[1][0]== "X" and gameBoard[1][1]== "X" and gameBoard[1][2]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[2][0]== "X" and gameBoard[2][1]== "X" and gameBoard[2][2]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[2][0]== "O" and gameBoard[2][1]== "O" and gameBoard[2][2]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    ### Y axis
+    elif(gameBoard[0][0]== "X" and gameBoard[1][0]== "X" and gameBoard[2][0]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][0]== "O" and gameBoard[1][0]== "O" and gameBoard[2][0]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    elif(gameBoard[0][1]== "X" and gameBoard[1][1]== "X" and gameBoard[2][1]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][1]== "O" and gameBoard[1][1]== "O" and gameBoard[2][1]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    elif(gameBoard[0][2]== "X" and gameBoard[1][2]== "X" and gameBoard[2][2]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][2]== "O" and gameBoard[1][2]== "O" and gameBoard[2][2]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    ### cross
+    elif(gameBoard[0][0]== "O" and gameBoard[1][1]== "O" and gameBoard[2][2]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
+    elif(gameBoard[0][0]== "X" and gameBoard[1][1]== "X" and gameBoard[2][2]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][2]== "X" and gameBoard[1][1]== "X" and gameBoard[2][0]== "X"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("X wins!!")
+        break
+    elif(gameBoard[0][2]== "O" and gameBoard[1][1]== "O" and gameBoard[2][0]== "O"):
+        printGameBoard()
+        print("\n-------------\n")
+        print("O wins!!")
+        break
